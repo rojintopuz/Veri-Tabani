@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ "Doktor Düzenle" if doktor and doktor.doktor_no else "Yeni Doktor" }} - Eczane VTYS{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <h1 class="h5 mb-0">{{ "Doktor Düzenle" if doktor and doktor.doktor_no else "Yeni Doktor Ekle" }}</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="ad" class="form-label">Ad Soyad *</label>
+                        <input type="text" class="form-control" id="ad" name="ad" maxlength="100" required
+                               placeholder="Dr. Ad Soyad"
+                               value="{{ doktor.ad if doktor else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="uzmanlik_alani" class="form-label">Uzmanlık Alanı *</label>
+                        <input type="text" class="form-control" id="uzmanlik_alani" name="uzmanlik_alani"
+                               maxlength="100" required
+                               value="{{ doktor.uzmanlik_alani if doktor else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="deneyim_yili" class="form-label">Deneyim Yılı *</label>
+                        <input type="number" class="form-control" id="deneyim_yili" name="deneyim_yili"
+                               min="0" max="65" step="1" required
+                               value="{{ doktor.deneyim_yili if doktor else '' }}">
+                        <div class="form-text">0 ile 65 arasında olmalıdır.</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('doktor_recete.doktor_listele') }}" class="btn btn-outline-secondary">İptal</a>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
