@@ -1,0 +1,36 @@
+# Her dosyanin tek sahibi vardir (CONTRIBUTING.md).
+# Kullanici adlarini Rojin doldurur: "@" isareti + GitHub kullanici adi.
+# Sahibi olmayan bir dosyayi degistiren PR, sahibinin onayini bekler.
+
+# --- Rojin Topuz (M1 + koordinasyon) ---
+*                                   @rojintopuz
+/README.md                          @rojintopuz
+/.github/                           @rojintopuz
+/app/moduller/hasta_muayene/        @rojintopuz
+/app/templates/hasta_muayene/       @rojintopuz
+
+# --- Meltem Can (M2 + veritabani altyapisi) ---
+# /db/                              @MELTEM_KULLANICI_ADI
+# /scripts/db_kur.py                @MELTEM_KULLANICI_ADI
+# /.github/workflows/               @MELTEM_KULLANICI_ADI
+# /app/moduller/doktor_recete/      @MELTEM_KULLANICI_ADI
+# /app/templates/doktor_recete/     @MELTEM_KULLANICI_ADI
+
+# --- Elifnur Ozkaya (M3 + uygulama iskeleti) ---
+# /.devcontainer/                   @ELIFNUR_KULLANICI_ADI
+# /requirements.txt                 @ELIFNUR_KULLANICI_ADI
+# /run.py                           @ELIFNUR_KULLANICI_ADI
+# /app/__init__.py                  @ELIFNUR_KULLANICI_ADI
+# /app/db.py                        @ELIFNUR_KULLANICI_ADI
+# /app/templates/base.html          @ELIFNUR_KULLANICI_ADI
+# /app/templates/index.html         @ELIFNUR_KULLANICI_ADI
+# /app/moduller/eczane_satis/       @ELIFNUR_KULLANICI_ADI
+# /app/templates/eczane_satis/      @ELIFNUR_KULLANICI_ADI
+
+# --- Altyn Baktybekova (M4 + dokumantasyon) ---
+# /docs/                            @ALTYN_KULLANICI_ADI
+# /app/moduller/ilac_tedarik/       @ALTYN_KULLANICI_ADI
+# /app/templates/ilac_tedarik/      @ALTYN_KULLANICI_ADI
+
+# Not: Satirlarin basindaki "#" isaretini, kullanici adini yazdiktan sonra kaldirin.
+# GitHub'da sonraki satir oncekini ezer; bu yuzden "*" en ustte durur.

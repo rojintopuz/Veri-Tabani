@@ -6,21 +6,21 @@
 -- ============================================================================
 
 INSERT INTO eczane (ad, adres) VALUES
-    ('Merkez Sifa Eczanesi', 'Ataturk Cad. No: 14, Osmangazi / Bursa'),
-    ('Gorukle Kampus Eczanesi', 'Sakarya Mah. Universite Bulv. No: 42, Nilufer / Bursa'),
-    ('Nilufer Park Eczanesi', 'Fethiye Mah. Fatih Sultan Mehmet Bulv. No: 88, Nilufer / Bursa'),
-    ('Uludag Hayat Eczanesi', 'Ihsaniye Mah. Tuna Cad. No: 19, Nilufer / Bursa'),
-    ('Yildirim Saglik Eczanesi', 'Ankara Yolu Cad. No: 112, Yildirim / Bursa'),
-    ('Mudanya Sahil Eczanesi', 'Halitpasa Mah. Iskele Meydani No: 7, Mudanya / Bursa'),
-    ('Cekirge Termal Eczanesi', 'Cekirge Cad. No: 63, Osmangazi / Bursa'),
-    ('Besevler Derman Eczanesi', 'Besevler Mah. Bilginler Cad. No: 25, Nilufer / Bursa'),
-    ('Ozluce Modern Eczanesi', 'Ozluce Mah. Ahmet Taner Kislali Bulv. No: 51, Nilufer / Bursa'),
-    ('Emek Guney Eczanesi', 'Emek Adnan Menderes Mah. Turgut Ozal Cad. No: 33, Osmangazi / Bursa'),
-    ('Gemlik Korfez Eczanesi', 'Dr. Ziya Kaya Mah. Orhangazi Cad. No: 18, Gemlik / Bursa'),
-    ('Inegol Merkez Eczanesi', 'Cuma Mah. Ataturk Bulv. No: 74, Inegol / Bursa'),
-    ('Kukurtlu Lokman Eczanesi', 'Kukurtlu Cad. No: 29, Osmangazi / Bursa'),
-    ('Ertugrul Kent Eczanesi', 'Ertugrul Mah. Ugur Mumcu Bulv. No: 60, Nilufer / Bursa'),
-    ('Altinsehir Eczanesi', 'Altinsehir Mah. Muammer Aksoy Cad. No: 11, Nilufer / Bursa');
+    ('Merkez Şifa Eczanesi', 'Atatürk Cad. No: 14, Osmangazi / Bursa'),
+    ('Görükle Kampüs Eczanesi', 'Sakarya Mah. Üniversite Bulv. No: 42, Nilüfer / Bursa'),
+    ('Nilüfer Park Eczanesi', 'Fethiye Mah. Fatih Sultan Mehmet Bulv. No: 88, Nilüfer / Bursa'),
+    ('Uludağ Hayat Eczanesi', 'İhsaniye Mah. Tuna Cad. No: 19, Nilüfer / Bursa'),
+    ('Yıldırım Sağlık Eczanesi', 'Ankara Yolu Cad. No: 112, Yıldırım / Bursa'),
+    ('Mudanya Sahil Eczanesi', 'Halitpaşa Mah. İskele Meydanı No: 7, Mudanya / Bursa'),
+    ('Çekirge Termal Eczanesi', 'Çekirge Cad. No: 63, Osmangazi / Bursa'),
+    ('Beşevler Derman Eczanesi', 'Beşevler Mah. Bilginler Cad. No: 25, Nilüfer / Bursa'),
+    ('Özlüce Modern Eczanesi', 'Özlüce Mah. Ahmet Taner Kışlalı Bulv. No: 51, Nilüfer / Bursa'),
+    ('Emek Güney Eczanesi', 'Emek Adnan Menderes Mah. Turgut Özal Cad. No: 33, Osmangazi / Bursa'),
+    ('Gemlik Körfez Eczanesi', 'Dr. Ziya Kaya Mah. Orhangazi Cad. No: 18, Gemlik / Bursa'),
+    ('İnegöl Merkez Eczanesi', 'Cuma Mah. Atatürk Bulv. No: 74, İnegöl / Bursa'),
+    ('Kükürtlü Lokman Eczanesi', 'Kükürtlü Cad. No: 29, Osmangazi / Bursa'),
+    ('Ertuğrul Kent Eczanesi', 'Ertuğrul Mah. Uğur Mumcu Bulv. No: 60, Nilüfer / Bursa'),
+    ('Altınşehir Eczanesi', 'Altınşehir Mah. Muammer Aksoy Cad. No: 11, Nilüfer / Bursa');
 
 INSERT INTO eczane_telefon (eczane_no, telefon_no) VALUES
     (1, '02242211001'),
