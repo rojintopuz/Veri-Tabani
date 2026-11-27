@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Eczane &amp; Satış Sorguları - Eczane VTYS{% endblock %}
+
+{% block content %}
+<ul class="nav nav-pills mb-4">
+    <li class="nav-item"><a class="nav-link" href="/eczane-satis/eczaneler">Eczaneler</a></li>
+    <li class="nav-item"><a class="nav-link" href="/eczane-satis/telefonlar">Telefonlar</a></li>
+    <li class="nav-item"><a class="nav-link" href="/eczane-satis/satislar">Satışlar</a></li>
+    <li class="nav-item"><a class="nav-link" href="/eczane-satis/rapor">Rapor</a></li>
+    <li class="nav-item"><a class="nav-link active" href="/eczane-satis/sorgular">Sorgular</a></li>
+</ul>
+
+<h1 class="h4 mb-1">İş Sorguları</h1>
+<p class="text-muted small mb-4">Kaynak: <code>db/sorgular/m3_eczane_satis.sql</code></p>
+
+{% for s in sonuclar %}
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-white">
+        <span class="badge text-bg-primary me-2">{{ s.kod }}</span>
+        <span class="badge text-bg-light border me-2">{{ s.tur }}</span>
+        <strong>{{ s.soru }}</strong>
+    </div>
+    <div class="card-body">
+        <details class="mb-3">
+            <summary class="small text-muted">SQL'i göster</summary>
+            <pre class="bg-light border rounded p-2 small mb-0"><code>{{ s.sql }}</code></pre>
+        </details>
+        {% if s.satirlar %}
+        <div class="table-responsive">
+            <table class="table table-sm table-striped mb-0 align-middle">
+                <thead class="table-light">
+                    <tr>
+                        {% for kolon in s.satirlar[0].keys() %}<th>{{ kolon }}</th>{% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for satir in s.satirlar %}
+                    <tr>
+                        {% for deger in satir.values() %}
+                        <td>{{ deger.strftime("%d.%m.%Y") if deger is not none and deger.strftime is defined else (deger if deger is not none else "-") }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p class="small text-muted mt-2 mb-0">{{ s.satirlar|length }} satır</p>
+        {% else %}
+        <p class="text-muted mb-0">Sonuç yok.</p>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
