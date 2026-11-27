@@ -35,3 +35,46 @@
 * **Beklenen Sonuç:**
   1. `fk_satis_eczane` (`ON DELETE RESTRICT`) kısıtı nedeniyle `Eczane A` silinemez ve arayüzde *"Bu eczaneye ait satış veya tedarik kaydı olduğu için silinemez."* uyarı mesajı görüntülenir.
   2. `Eczane B` silinir ve `fk_eczane_telefon_eczane` (`ON DELETE CASCADE`) kuralı gereği `Eczane B`'ye ait tüm telefon numaraları `eczane_telefon` tablosundan otomatik olarak temizlenir.
+
+---
+
+## Modül 2: Doktor & Reçete Test Senaryoları (Meltem Can)
+
+### TS-M2-01: Muayenesiz veya Muayeneden Önce Reçete Yazılmasının Engellenmesi (`trg_recete_muayene_kontrol`)
+* **İlgili Nesne:** `recete` tablosu, `trg_recete_muayene_kontrol` tetikleyicisi (`trgf_recete_muayene_kontrol()`)
+* **Ön Koşul:** Örnek veriler yüklü olmalıdır. `Dr. Ali Yılmaz` (`doktor_no = 1`), `Ayşe Yılmaz`'ı (`'10234567810'`) 02.09.2026'da muayene etmiştir; `Dr. Oğuz Tekin` (`doktor_no = 11`) hiç muayene yapmamıştır.
+* **Test Adımları:**
+  1. **Negatif Test 1 (Muayene yok):** `/doktor-recete/receteler/yeni` formundan Dr. Oğuz Tekin → Ayşe Yılmaz → Parol 500 mg, tarih 01.11.2026 ile reçete eklemeye çalışın.
+  2. **Negatif Test 2 (Muayeneden önce):** Dr. Ali Yılmaz → Ayşe Yılmaz → Parol 500 mg, tarih **01.09.2026** (muayeneden bir gün önce) ile reçete eklemeye çalışın.
+  3. **Pozitif Test:** Aynı reçeteyi tarih **02.09.2026** (muayene günü) ile ekleyin.
+* **Beklenen Sonuç:**
+  1. Negatif testlerde tetikleyici `RAISE EXCEPTION` ile işlemi durdurur, `recete` tablosuna kayıt eklenmez, form girilen değerlerle yeniden açılır ve kırmızı uyarı (`flash`) mesajı gösterilir.
+  2. Pozitif testte reçete eklenir ve `/doktor-recete/receteler` listesinde görünür. (Bir reçetenin tarihi düzenlenip muayeneden önceye alınmak istenirse de aynı tetikleyici devreye girer.)
+
+---
+
+### TS-M2-02: Muayenesi veya Reçetesi Olan Doktorun Silinmesinin Engellenmesi
+* **İlgili Nesne:** `doktor`, `muayene`, `recete` tabloları (`fk_muayene_doktor`, `fk_recete_doktor`, `ON DELETE RESTRICT`)
+* **Ön Koşul:** `Dr. Ali Yılmaz`'ın (`doktor_no = 1`) muayene ve reçete kayıtları vardır; `Dr. Deniz Uçar`'ın (`doktor_no = 12`) hiçbir kaydı yoktur.
+* **Test Adımları:**
+  1. `/doktor-recete/doktorlar` sayfasında Dr. Ali Yılmaz için **Sil** butonuna tıklayın.
+  2. Dr. Deniz Uçar için **Sil** butonuna tıklayın.
+* **Beklenen Sonuç:**
+  1. `ForeignKeyViolation` yakalanır, doktor silinmez ve *"Bu doktorun muayene veya reçete kaydı olduğu için silinemez."* uyarısı gösterilir.
+  2. Dr. Deniz Uçar silinir, *"Doktor silindi."* mesajı görünür ve doktor listeden kalkar.
+
+---
+
+### TS-M2-03: Doktor ve Reçete Formlarında Kısıt Doğrulaması
+* **İlgili Nesne:** `ck_doktor_deneyim_yili`, `ck_recete_miktar`, `uq_recete_doktor_hasta_ilac_tarih`
+* **Ön Koşul:** Örnek veriler yüklü olmalıdır.
+* **Test Adımları:**
+  1. **Negatif Test 1:** `/doktor-recete/doktorlar/yeni` formunda ad alanına sadece boşluk yazıp kaydetmeye çalışın.
+  2. **Negatif Test 2:** Deneyim yılına `70` girip kaydetmeye çalışın.
+  3. **Negatif Test 3 (Tekrarlı reçete):** Dr. Ali Yılmaz → Ayşe Yılmaz → Parol 500 mg, tarih 03.09.2026 reçetesini (örnek veride zaten var) tekrar ekleyin.
+  4. **Pozitif Test:** `Dr. Test Doktor`, `Nöroloji`, `5` yıl ile yeni doktor ekleyin.
+* **Beklenen Sonuç:**
+  1. Boş ad kaydedilmez, *"Doktor adı ve uzmanlık alanı boş bırakılamaz."* uyarısı gösterilir.
+  2. Deneyim yılı 0–65 aralığı dışında olduğu için kayıt yapılmaz ve uyarı gösterilir.
+  3. `UniqueViolation` yakalanır, *"Bu doktor aynı gün bu hastaya bu ilacı zaten reçete etmiş."* uyarısı gösterilir.
+  4. Yeni doktor eklenir ve listenin sonunda görünür.
