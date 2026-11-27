@@ -20,8 +20,13 @@ def eczane_yeni_form():
 
 @eczane_satis_bp.post("/eczaneler/yeni")
 def eczane_ekle():
+    ad = request.form["ad"].strip()
+    if not ad:
+        flash("Eczane adı boş bırakılamaz.", "danger")
+        return redirect(url_for("eczane_satis.eczane_listele"))
+
     form_verisi = {
-        "ad": request.form["ad"].strip(),
+        "ad": ad,
         "adres": request.form.get("adres", "").strip() or None,
     }
     try:
@@ -43,9 +48,14 @@ def eczane_duzenle_form(eczane_no):
 
 @eczane_satis_bp.post("/eczaneler/<int:eczane_no>/duzenle")
 def eczane_duzenle(eczane_no):
+    ad = request.form["ad"].strip()
+    if not ad:
+        flash("Eczane adı boş bırakılamaz.", "danger")
+        return redirect(url_for("eczane_satis.eczane_listele"))
+
     form_verisi = {
         "eczane_no": eczane_no,
-        "ad": request.form["ad"].strip(),
+        "ad": ad,
         "adres": request.form.get("adres", "").strip() or None,
     }
     try:
@@ -129,6 +139,8 @@ def telefon_duzenle(eczane_no, telefon_no):
         flash("Bu eczane için bu telefon numarası zaten kayıtlı.", "danger")
     except psycopg.errors.CheckViolation:
         flash("Telefon numarası 0 ile başlayan 11 haneli rakam olmalıdır.", "danger")
+    except psycopg.errors.ForeignKeyViolation:
+        flash("Seçilen eczane bulunamadı.", "danger")
     return redirect(url_for("eczane_satis.telefon_listele"))
 
 
