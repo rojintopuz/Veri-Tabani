@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}İlaç & Tedarik Sorguları - Eczane VTYS{% endblock %}
+
+{% block content %}
+<ul class="nav nav-pills mb-4">
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.ilac_listele') }}">İlaçlar</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.tedarikci_listele') }}">Tedarikçiler</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.tedarik_listele') }}">Tedarikler</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.rapor') }}">Rapor</a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{ url_for('ilac_tedarik.sorgular') }}">Sorgular</a></li>
+</ul>
+
+<h1 class="h4 mb-3">İlaç &amp; Tedarik Sorguları</h1>
+
+{% for s in sonuclar %}
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-white">
+        <h2 class="h6 mb-1">{{ s.kod }} <span class="badge text-bg-secondary">{{ s.tur }}</span></h2>
+        <div class="text-muted small">{{ s.soru }}</div>
+    </div>
+    <div class="card-body pb-0">
+        <details class="mb-3">
+            <summary class="small">SQL'i göster</summary>
+            <pre class="bg-light border rounded p-2 small mb-0"><code>{{ s.sql | trim }}</code></pre>
+        </details>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-sm table-striped mb-0 align-middle">
+            {% if s.satirlar %}
+            <thead class="table-light">
+                <tr>
+                    {% for kolon in s.satirlar[0].keys() %}<th>{{ kolon }}</th>{% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for satir in s.satirlar %}
+                <tr>
+                    {% for deger in satir.values() %}<td>{{ deger if deger is not none else "-" }}</td>{% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% else %}
+            <tbody><tr><td class="text-center text-muted py-3">Sorgu sonuç döndürmedi.</td></tr></tbody>
+            {% endif %}
+        </table>
+    </div>
+    <div class="card-footer bg-white small text-muted">{{ s.satirlar | length }} satır</div>
+</div>
+{% endfor %}
+{% endblock %}
