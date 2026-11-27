@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ "Eczane Düzenle" if eczane else "Yeni Eczane" }} - Eczane VTYS{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <h1 class="h5 mb-0">{{ "Eczane Düzenle" if eczane else "Yeni Eczane Ekle" }}</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="ad" class="form-label">Eczane Adı *</label>
+                        <input type="text" class="form-control" id="ad" name="ad" maxlength="100" required
+                               value="{{ eczane.ad if eczane else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="adres" class="form-label">Adres</label>
+                        <textarea class="form-control" id="adres" name="adres" rows="3" maxlength="250">{{ eczane.adres or '' if eczane else '' }}</textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('eczane_satis.eczane_listele') }}" class="btn btn-outline-secondary">İptal</a>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

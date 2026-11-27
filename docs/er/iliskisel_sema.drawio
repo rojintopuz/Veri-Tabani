@@ -1,0 +1,283 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="sema" name="İlişkisel Şema">
+    <mxGraphModel dx="1677" dy="1196" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1060" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="doktor" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;" value="doktor  (M2)" vertex="1">
+          <mxGeometry height="138" width="300" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="doktor.doktor_no" parent="doktor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="doktor_no : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="doktor.ad" parent="doktor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="ad : VARCHAR(100)" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="doktor.uzmanlik_alani" parent="doktor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="uzmanlik_alani : VARCHAR(100)" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="doktor.deneyim_yili" parent="doktor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="deneyim_yili : SMALLINT" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="hasta" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" value="hasta  (M1)" vertex="1">
+          <mxGeometry height="138" width="300" x="40" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="hasta.hasta_kimlik_no" parent="hasta" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="hasta_kimlik_no : CHAR(11)  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="hasta.ad" parent="hasta" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="ad : VARCHAR(100)" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hasta.adres" parent="hasta" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="adres : VARCHAR(250)" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="hasta.yas" parent="hasta" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="yas : SMALLINT" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="muayene" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" value="muayene  (M1)" vertex="1">
+          <mxGeometry height="138" width="300" x="420" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="muayene.muayene_id" parent="muayene" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="muayene_id : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="muayene.doktor_no" parent="muayene" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="doktor_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="muayene.hasta_kimlik_no" parent="muayene" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="hasta_kimlik_no : CHAR(11)  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="muayene.muayene_tarihi" parent="muayene" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="muayene_tarihi : DATE" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="recete" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;" value="recete  (M2)" vertex="1">
+          <mxGeometry height="190" width="300" x="420" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="recete.recete_id" parent="recete" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="recete_id : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="recete.doktor_no" parent="recete" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="doktor_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="recete.hasta_kimlik_no" parent="recete" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="hasta_kimlik_no : CHAR(11)  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="recete.ilac_no" parent="recete" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="ilac_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="recete.recete_tarihi" parent="recete" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="recete_tarihi : DATE" vertex="1">
+          <mxGeometry height="26" width="300" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="recete.miktar" parent="recete" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="miktar : INTEGER" vertex="1">
+          <mxGeometry height="26" width="300" y="164" as="geometry" />
+        </mxCell>
+        <mxCell id="ilac" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="ilac  (M4)" vertex="1">
+          <mxGeometry height="112" width="300" x="800" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ilac.ilac_no" parent="ilac" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="ilac_no : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ilac.ticari_ad" parent="ilac" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="ticari_ad : VARCHAR(100)" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ilac.formul" parent="ilac" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="formul : VARCHAR(250)" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="satis" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;" value="satis  (M3)" vertex="1">
+          <mxGeometry height="190" width="300" x="800" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="satis.satis_id" parent="satis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="satis_id : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="satis.eczane_no" parent="satis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="eczane_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="satis.hasta_kimlik_no" parent="satis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="hasta_kimlik_no : CHAR(11)  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="satis.ilac_no" parent="satis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="ilac_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="satis.fiyat" parent="satis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="fiyat : NUMERIC(10,2)" vertex="1">
+          <mxGeometry height="26" width="300" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="satis.satis_tarihi" parent="satis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="satis_tarihi : DATE" vertex="1">
+          <mxGeometry height="26" width="300" y="164" as="geometry" />
+        </mxCell>
+        <mxCell id="eczane" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;" value="eczane  (M3)" vertex="1">
+          <mxGeometry height="112" width="300" x="1180" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="eczane.eczane_no" parent="eczane" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="eczane_no : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="eczane.ad" parent="eczane" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="ad : VARCHAR(100)" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eczane.adres" parent="eczane" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="adres : VARCHAR(250)" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="tedarik  (M4)" vertex="1">
+          <mxGeometry height="190" width="300" x="1180" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik.tedarik_id" parent="tedarik" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="tedarik_id : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik.tedarikci_no" parent="tedarik" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="tedarikci_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik.eczane_no" parent="tedarik" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="eczane_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik.ilac_no" parent="tedarik" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=2;html=1;" value="ilac_no : INTEGER  [FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik.miktar" parent="tedarik" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="miktar : INTEGER" vertex="1">
+          <mxGeometry height="26" width="300" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik.tedarik_tarihi" parent="tedarik" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="tedarik_tarihi : DATE" vertex="1">
+          <mxGeometry height="26" width="300" y="164" as="geometry" />
+        </mxCell>
+        <mxCell id="eczane_telefon" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;" value="eczane_telefon  (M3)" vertex="1">
+          <mxGeometry height="86" width="300" x="1560" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="eczane_telefon.eczane_no" parent="eczane_telefon" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="eczane_no : INTEGER  [PK, FK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="eczane_telefon.telefon_no" parent="eczane_telefon" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="telefon_no : VARCHAR(15)  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarikci" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="tedarikci  (M4)" vertex="1">
+          <mxGeometry height="112" width="300" x="1560" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarikci.tedarikci_no" parent="tedarikci" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="tedarikci_no : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarikci.ad" parent="tedarikci" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="ad : VARCHAR(100)" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarikci.adres" parent="tedarikci" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="adres : VARCHAR(250)" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik_denetim" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;collapsible=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="tedarik_denetim  (M4)" vertex="1">
+          <mxGeometry height="190" width="300" x="1560" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik_denetim.denetim_id" parent="tedarik_denetim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=5;html=1;" value="denetim_id : INTEGER  [PK]" vertex="1">
+          <mxGeometry height="26" width="300" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik_denetim.tedarik_id" parent="tedarik_denetim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="tedarik_id : INTEGER" vertex="1">
+          <mxGeometry height="26" width="300" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik_denetim.islem_turu" parent="tedarik_denetim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="islem_turu : VARCHAR(10)" vertex="1">
+          <mxGeometry height="26" width="300" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik_denetim.eski_miktar" parent="tedarik_denetim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="eski_miktar : INTEGER" vertex="1">
+          <mxGeometry height="26" width="300" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik_denetim.yeni_miktar" parent="tedarik_denetim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="yeni_miktar : INTEGER" vertex="1">
+          <mxGeometry height="26" width="300" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="tedarik_denetim.islem_zamani" parent="tedarik_denetim" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontSize=13;fontStyle=0;html=1;" value="islem_zamani : TIMESTAMP" vertex="1">
+          <mxGeometry height="26" width="300" y="164" as="geometry" />
+        </mxCell>
+        <mxCell id="fk0" edge="1" parent="1" source="muayene.doktor_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#e3c800;strokeColor=#B09500;" target="doktor.doktor_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="133" />
+              <mxPoint x="390" y="127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk1" edge="1" parent="1" source="muayene.hasta_kimlik_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#fa6800;strokeColor=#C73500;" target="hasta.hasta_kimlik_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="159" />
+              <mxPoint x="360" y="607" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk2" edge="1" parent="1" source="recete.doktor_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#e51400;strokeColor=#B20000;" target="doktor.doktor_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="375" y="373" />
+              <mxPoint x="375" y="127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk3" edge="1" parent="1" source="recete.hasta_kimlik_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#b1ddf0;strokeColor=#10739e;" target="hasta.hasta_kimlik_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="399" />
+              <mxPoint x="400" y="607" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk4" edge="1" parent="1" source="recete.ilac_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#ffcd28;gradientColor=#ffa500;strokeColor=#d79b00;" target="ilac.ilac_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="425" />
+              <mxPoint x="760" y="127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk5" edge="1" parent="1" source="satis.eczane_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#a20025;strokeColor=#6F0000;" target="eczane.eczane_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1135" y="633" />
+              <mxPoint x="1135" y="167" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk6" edge="1" parent="1" source="satis.hasta_kimlik_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#a0522d;strokeColor=#6D1F00;" target="hasta.hasta_kimlik_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="385" y="659" />
+              <mxPoint x="385" y="607" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk7" edge="1" parent="1" source="satis.ilac_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#6a00ff;strokeColor=#3700CC;" target="ilac.ilac_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1115" y="685" />
+              <mxPoint x="1115" y="127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk8" edge="1" parent="1" source="eczane_telefon.eczane_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#60a917;strokeColor=#2D7600;" target="eczane.eczane_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="167" />
+              <mxPoint x="1520" y="167" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk9" edge="1" parent="1" source="tedarik.tedarikci_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#60a917;strokeColor=#2D7600;" target="tedarikci.tedarikci_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="633" />
+              <mxPoint x="1520" y="607" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk10" edge="1" parent="1" source="tedarik.eczane_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#6a00ff;strokeColor=#3700CC;" target="eczane.eczane_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1500" y="659" />
+              <mxPoint x="1500" y="167" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk11" edge="1" parent="1" source="tedarik.ilac_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;startArrow=oval;startFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#1ba1e2;strokeColor=#006EAF;" target="ilac.ilac_no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1158" y="685" />
+              <mxPoint x="1158" y="127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="baslik" parent="1" style="text;fontSize=22;fontStyle=1;html=1;align=left;" value="Eczane VTYS – İlişkisel Şema (11 tablo)" vertex="1">
+          <mxGeometry height="40" width="700" x="40" y="1000" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
