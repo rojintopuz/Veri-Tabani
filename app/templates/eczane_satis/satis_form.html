@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ "Satış Düzenle" if duzenleme else "Yeni Satış" }} - Eczane VTYS{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <h1 class="h5 mb-0">{{ "Satış Düzenle" if duzenleme else "Yeni Satış Ekle" }}</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="eczane_no" class="form-label">Eczane *</label>
+                        <select class="form-select" id="eczane_no" name="eczane_no" required>
+                            <option value="">Seçin...</option>
+                            {% for e in eczaneler %}
+                            <option value="{{ e.eczane_no }}"
+                                {% if satis and satis.eczane_no|string == e.eczane_no|string %}selected{% endif %}>
+                                {{ e.ad }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hasta_kimlik_no" class="form-label">Hasta *</label>
+                        <select class="form-select" id="hasta_kimlik_no" name="hasta_kimlik_no" required>
+                            <option value="">Seçin...</option>
+                            {% for h in hastalar %}
+                            <option value="{{ h.hasta_kimlik_no }}"
+                                {% if satis and satis.hasta_kimlik_no == h.hasta_kimlik_no %}selected{% endif %}>
+                                {{ h.ad }} ({{ h.hasta_kimlik_no }})
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ilac_no" class="form-label">İlaç *</label>
+                        <select class="form-select" id="ilac_no" name="ilac_no" required>
+                            <option value="">Seçin...</option>
+                            {% for i in ilaclar %}
+                            <option value="{{ i.ilac_no }}"
+                                {% if satis and satis.ilac_no|string == i.ilac_no|string %}selected{% endif %}>
+                                {{ i.ticari_ad }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <label for="satis_tarihi" class="form-label">Satış Tarihi *</label>
+                            <input type="date" class="form-control" id="satis_tarihi" name="satis_tarihi"
+                                   required value="{{ satis.satis_tarihi if satis else bugun }}">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <label for="fiyat" class="form-label">Fiyat (₺) *</label>
+                            <input type="number" class="form-control" id="fiyat" name="fiyat"
+                                   min="0" step="0.01" required
+                                   value="{{ satis.fiyat if satis else '' }}">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('eczane_satis.satis_listele') }}" class="btn btn-outline-secondary">İptal</a>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
