@@ -6,15 +6,15 @@
 -- ============================================================================
 
 INSERT INTO tedarikci (ad, adres) VALUES
-    ('Bursa Ecza Deposu', 'Demirtas OSB Mah. Mavi Cad. No: 8, Osmangazi / Bursa'),
-    ('Marmara Ilac Dagitim', 'Nilufer OSB Mah. Kirmizi Cad. No: 21, Nilufer / Bursa'),
-    ('Uludag Saglik Urunleri Deposu', 'Minareli Cavus Mah. Ilac Sok. No: 5, Nilufer / Bursa'),
-    ('Anadolu Medikal Ecza Deposu', 'Kayapa Mah. Sanayi Cad. No: 47, Nilufer / Bursa'),
-    ('Yesil Hayat Ilac Lojistik', 'Panayir Mah. Istanbul Yolu Cad. No: 130, Osmangazi / Bursa'),
-    ('Gemlik Korfez Ecza Deposu', 'Hamidiye Mah. Liman Cad. No: 12, Gemlik / Bursa'),
-    ('Inegol Saglik Dagitim', 'Sinanbey Mah. Bursa Cad. No: 66, Inegol / Bursa'),
-    ('Ege Marmara Ecza Deposu', 'Ihsaniye Mah. Lefkose Cad. No: 9, Nilufer / Bursa'),
-    ('Kent Farma Dagitim', 'Yenidogan Mah. Yalova Yolu No: 210, Osmangazi / Bursa'),
-    ('Mudanya Ilac Tedarik', 'Guzelyali Mah. Sahil Yolu No: 3, Mudanya / Bursa'),
-    ('Nilufer Ecza Lojistik', 'Gorukle Mah. Organize Sanayi Cad. No: 15, Nilufer / Bursa'),
-    ('Yildirim Medikal Depo', 'Millet Mah. Ankara Yolu No: 300, Yildirim / Bursa');
+    ('Bursa Ecza Deposu', 'Demirtaş OSB Mah. Mavi Cad. No: 8, Osmangazi / Bursa'),
+    ('Marmara İlaç Dağıtım', 'Nilüfer OSB Mah. Kırmızı Cad. No: 21, Nilüfer / Bursa'),
+    ('Uludağ Sağlık Ürünleri Deposu', 'Minareli Çavuş Mah. İlaç Sok. No: 5, Nilüfer / Bursa'),
+    ('Anadolu Medikal Ecza Deposu', 'Kayapa Mah. Sanayi Cad. No: 47, Nilüfer / Bursa'),
+    ('Yeşil Hayat İlaç Lojistik', 'Panayır Mah. İstanbul Yolu Cad. No: 130, Osmangazi / Bursa'),
+    ('Gemlik Körfez Ecza Deposu', 'Hamidiye Mah. Liman Cad. No: 12, Gemlik / Bursa'),
+    ('İnegöl Sağlık Dağıtım', 'Sinanbey Mah. Bursa Cad. No: 66, İnegöl / Bursa'),
+    ('Ege Marmara Ecza Deposu', 'İhsaniye Mah. Lefkoşe Cad. No: 9, Nilüfer / Bursa'),
+    ('Kent Farma Dağıtım', 'Yenidoğan Mah. Yalova Yolu No: 210, Osmangazi / Bursa'),
+    ('Mudanya İlaç Tedarik', 'Güzelyalı Mah. Sahil Yolu No: 3, Mudanya / Bursa'),
+    ('Nilüfer Ecza Lojistik', 'Görükle Mah. Organize Sanayi Cad. No: 15, Nilüfer / Bursa'),
+    ('Yıldırım Medikal Depo', 'Millet Mah. Ankara Yolu No: 300, Yıldırım / Bursa');
