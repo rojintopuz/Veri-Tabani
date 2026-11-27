@@ -6,7 +6,7 @@ Her modül sahibi kendi modülü için **3 test senaryosu** yazar (pozitif + neg
 | Test eden | Test edilen modül | Durum | Not |
 |---|---|---|---|
 | Meltem Can | M1 – Hasta & Muayene | ⏳ | |
-| Elifnur Özkaya | M2 – Doktor & Reçete | ⏳ | |
+| Elifnur Özkaya | M2 – Doktor & Reçete | ✅ | TS-M2-01, TS-M2-02, TS-M2-03 adımları doğrulandı. |
 | Altyn Baktybekova | M3 – Eczane & Satış | ⏳ | |
 | Rojin Topuz | M4 – İlaç & Tedarik | ⏳ | |
 
