@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Tedarikler - Eczane VTYS{% endblock %}
+
+{% block content %}
+<ul class="nav nav-pills mb-4">
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.ilac_listele') }}">İlaçlar</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.tedarikci_listele') }}">Tedarikçiler</a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{ url_for('ilac_tedarik.tedarik_listele') }}">Tedarikler</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.rapor') }}">Rapor</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.sorgular') }}">Sorgular</a></li>
+</ul>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h4 mb-0">Tedarik İşlemleri</h1>
+    <a href="{{ url_for('ilac_tedarik.tedarik_yeni_form') }}" class="btn btn-primary btn-sm">+ Yeni Tedarik</a>
+</div>
+
+<div class="table-responsive bg-white shadow-sm rounded">
+    <table class="table table-striped table-hover mb-0 align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>No</th>
+                <th>Tarih</th>
+                <th>Tedarikçi</th>
+                <th>Eczane</th>
+                <th>İlaç</th>
+                <th class="text-end">Miktar (kutu)</th>
+                <th class="text-end">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tedarikler %}
+            <tr>
+                <td>{{ t.tedarik_id }}</td>
+                <td>{{ t.tedarik_tarihi.strftime('%d.%m.%Y') }}</td>
+                <td>{{ t.tedarikci_ad }}</td>
+                <td>{{ t.eczane_ad }}</td>
+                <td>{{ t.ticari_ad }}</td>
+                <td class="text-end">{{ t.miktar }}</td>
+                <td class="text-end text-nowrap">
+                    <a href="{{ url_for('ilac_tedarik.tedarik_duzenle_form', tedarik_id=t.tedarik_id) }}"
+                       class="btn btn-outline-secondary btn-sm">Düzenle</a>
+                    <form method="post"
+                          action="{{ url_for('ilac_tedarik.tedarik_sil', tedarik_id=t.tedarik_id) }}"
+                          class="d-inline"
+                          onsubmit="return confirm('Bu tedarik kaydını silmek istediğinize emin misiniz?');">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Sil</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="7" class="text-center text-muted py-3">Kayıtlı tedarik bulunamadı.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
