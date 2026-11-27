@@ -19,9 +19,9 @@ BEGIN
           AND r.ilac_no = NEW.ilac_no
           AND r.recete_tarihi <= NEW.satis_tarihi
     ) THEN
-        RAISE EXCEPTION 'Hasta (%) icin % numarali ilaca ait % tarihinde veya oncesinde yazilmis recete bulunamadi.',
+        RAISE EXCEPTION 'Hasta (%) için % numaralı ilaca ait % tarihinde veya öncesinde yazılmış reçete bulunamadı.',
             NEW.hasta_kimlik_no, NEW.ilac_no, NEW.satis_tarihi
-            USING HINT = 'Ilac satisi yapmadan once gecerli bir recete kaydi olusturun.';
+            USING HINT = 'İlaç satışı yapmadan önce geçerli bir reçete kaydı oluşturun.';
     END IF;
 
     RETURN NEW;

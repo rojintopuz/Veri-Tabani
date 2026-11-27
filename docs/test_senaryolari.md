@@ -109,7 +109,7 @@ Durum: ✅ geçti · ❌ hata bulundu (Issue numarası nota yazılır) · ⏳ te
 
 ### TS-M3-01: Reçetesiz veya Reçete Tarihinden Önce İlaç Satışının Engellenmesi (`trg_satis_recete_kontrol`)
 * **İlgili Nesne:** `satis` tablosu, `trg_satis_recete_kontrol` tetikleyicisi (`trgf_satis_recete_kontrol()`)
-* **Ön Koşul:** Sistemde kayıtlı bir eczane (`eczane_no = 1`), hasta (`hasta_kimlik_no = '10000000001'`) ve ilaç (`ilac_no = 1`) bulunmalıdır.
+* **Ön Koşul:** Örnek veriler yüklü olmalıdır. Sistemde kayıtlı bir eczane (`eczane_no = 1`), hasta (`Ayşe Yılmaz` — `'10234567810'`) ve ilaç (`ilac_no = 1`) bulunmalıdır.
 * **Test Adımları:**
   1. **Negatif Test:** İlgili hasta ve ilaç için `recete` tablosunda kayıt yokken (veya `recete_tarihi > satis_tarihi` olacak şekilde) `/eczane-satis/satislar/yeni` formundan yeni satış kaydı eklemeye çalışın.
   2. **Pozitif Test:** İlgili hasta ve ilaç için `recete_tarihi <= satis_tarihi` koşulunu sağlayan geçerli bir reçete varken aynı satış kaydını ekleyin.
@@ -135,13 +135,15 @@ Durum: ✅ geçti · ❌ hata bulundu (Issue numarası nota yazılır) · ⏳ te
 
 ### TS-M3-03: Satışı Olan Eczanenin Silinmesinin Engellenmesi ve Kaskad Telefon Silme
 * **İlgili Nesne:** `eczane`, `eczane_telefon`, `satis` tabloları (`fk_satis_eczane`, `fk_eczane_telefon_eczane`)
-* **Ön Koşul:** `eczane_telefon` tablosunda telefon numaraları bulunan iki eczaneden birinin (`Eczane A`) `satis` tablosunda kaydı bulunmalı, diğerinin (`Eczane B`) ise satış kaydı bulunmamalıdır.
+* **Ön Koşul:** Örnek veriler yüklü olmalıdır (`eczane_no = 1` kaydının satış/tedarik ilişkisi vardır).
 * **Test Adımları:**
-  1. `/eczane-satis/eczaneler` sayfasından satış kaydı bulunan `Eczane A` için **Sil** butonuna tıklayın.
-  2. Satış kaydı bulunmayan `Eczane B` için **Sil** butonuna tıklayın ve ardından `/eczane-satis/telefonlar` sayfasını kontrol edin.
+  1. `/eczane-satis/eczaneler/yeni` ekranından `Test Eczanesi` adıyla yeni bir eczane ekleyin ve `/eczane-satis/telefonlar/yeni` ekranından bu eczaneye `02248887766` telefon numarasını tanımlayın.
+  2. `/eczane-satis/eczaneler` sayfasından satış kaydı bulunan mevcut eczane (`eczane_no = 1`) için **Sil** butonuna tıklayın.
+  3. Yeni eklediğiniz `Test Eczanesi` için **Sil** butonuna tıklayın ve ardından `/eczane-satis/telefonlar` sayfasını kontrol edin.
 * **Beklenen Sonuç:**
-  1. `fk_satis_eczane` (`ON DELETE RESTRICT`) kısıtı nedeniyle `Eczane A` silinemez ve arayüzde *"Bu eczaneye ait satış veya tedarik kaydı olduğu için silinemez."* uyarı mesajı görüntülenir.
-  2. `Eczane B` silinir ve `fk_eczane_telefon_eczane` (`ON DELETE CASCADE`) kuralı gereği `Eczane B`'ye ait tüm telefon numaraları `eczane_telefon` tablosundan otomatik olarak temizlenir.
+  1. Yeni eczane ve telefon numarası listelere eklenir.
+  2. `ON DELETE RESTRICT` kısıtı nedeniyle mevcut eczane silinemez ve arayüzde *"Bu eczaneye ait satış veya tedarik kaydı olduğu için silinemez."* uyarı mesajı görüntülenir.
+  3. `Test Eczanesi` silinir ve `fk_eczane_telefon_eczane` (`ON DELETE CASCADE`) kuralı gereği `02248887766` numarası `eczane_telefon` tablosundan otomatik olarak temizlenir.
 
 ---
 
