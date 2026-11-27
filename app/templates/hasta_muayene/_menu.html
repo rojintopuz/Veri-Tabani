@@ -1,0 +1,6 @@
+<ul class="nav nav-pills mb-4">
+    <li class="nav-item"><a class="nav-link {{ 'active' if aktif == 'hasta' }}" href="{{ url_for('hasta_muayene.hasta_listele') }}">Hastalar</a></li>
+    <li class="nav-item"><a class="nav-link {{ 'active' if aktif == 'muayene' }}" href="{{ url_for('hasta_muayene.muayene_listele') }}">Muayeneler</a></li>
+    <li class="nav-item"><a class="nav-link {{ 'active' if aktif == 'rapor' }}" href="{{ url_for('hasta_muayene.rapor') }}">Rapor</a></li>
+    <li class="nav-item"><a class="nav-link {{ 'active' if aktif == 'sorgular' }}" href="{{ url_for('hasta_muayene.sorgular') }}">Sorgular</a></li>
+</ul>
