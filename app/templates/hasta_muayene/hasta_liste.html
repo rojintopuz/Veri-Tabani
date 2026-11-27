@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Hastalar - Eczane VTYS{% endblock %}
+
+{% block content %}
+{% with aktif = 'hasta' %}{% include "hasta_muayene/_menu.html" %}{% endwith %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h4 mb-0">Hasta Listesi</h1>
+    <a href="{{ url_for('hasta_muayene.hasta_ekle') }}" class="btn btn-primary btn-sm">+ Yeni Hasta</a>
+</div>
+
+<div class="table-responsive bg-white shadow-sm rounded">
+    <table class="table table-striped table-hover mb-0 align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Kimlik No</th>
+                <th>Ad Soyad</th>
+                <th>Adres</th>
+                <th class="text-end">Yaş</th>
+                <th class="text-end">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for h in hastalar %}
+            <tr>
+                <td><code>{{ h.hasta_kimlik_no }}</code></td>
+                <td>{{ h.ad }}</td>
+                <td>{{ h.adres or "-" }}</td>
+                <td class="text-end">{{ h.yas }}</td>
+                <td class="text-end text-nowrap">
+                    <a href="{{ url_for('hasta_muayene.rapor', hasta_kimlik_no=h.hasta_kimlik_no) }}"
+                       class="btn btn-outline-primary btn-sm">Geçmiş</a>
+                    <a href="{{ url_for('hasta_muayene.hasta_duzenle', hasta_kimlik_no=h.hasta_kimlik_no) }}"
+                       class="btn btn-outline-secondary btn-sm">Düzenle</a>
+                    <form method="post"
+                          action="{{ url_for('hasta_muayene.hasta_sil', hasta_kimlik_no=h.hasta_kimlik_no) }}"
+                          class="d-inline"
+                          onsubmit="return confirm('Bu hastayı silmek istediğinize emin misiniz?');">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Sil</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="text-center text-muted py-3">Kayıtlı hasta bulunamadı.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

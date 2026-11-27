@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Tedarikçiler - Eczane VTYS{% endblock %}
+
+{% block content %}
+<ul class="nav nav-pills mb-4">
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.ilac_listele') }}">İlaçlar</a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{ url_for('ilac_tedarik.tedarikci_listele') }}">Tedarikçiler</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.tedarik_listele') }}">Tedarikler</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.rapor') }}">Rapor</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('ilac_tedarik.sorgular') }}">Sorgular</a></li>
+</ul>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h4 mb-0">Tedarikçi Listesi</h1>
+    <a href="{{ url_for('ilac_tedarik.tedarikci_yeni_form') }}" class="btn btn-primary btn-sm">+ Yeni Tedarikçi</a>
+</div>
+
+<div class="table-responsive bg-white shadow-sm rounded">
+    <table class="table table-striped table-hover mb-0 align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>No</th>
+                <th>Tedarikçi Adı</th>
+                <th>Adres</th>
+                <th class="text-end">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tc in tedarikciler %}
+            <tr>
+                <td>{{ tc.tedarikci_no }}</td>
+                <td>{{ tc.ad }}</td>
+                <td>{{ tc.adres or "-" }}</td>
+                <td class="text-end">
+                    <a href="{{ url_for('ilac_tedarik.tedarikci_duzenle_form', tedarikci_no=tc.tedarikci_no) }}"
+                       class="btn btn-outline-secondary btn-sm">Düzenle</a>
+                    <form method="post"
+                          action="{{ url_for('ilac_tedarik.tedarikci_sil', tedarikci_no=tc.tedarikci_no) }}"
+                          class="d-inline"
+                          onsubmit="return confirm('Bu tedarikçiyi silmek istediğinize emin misiniz?');">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Sil</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center text-muted py-3">Kayıtlı tedarikçi bulunamadı.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

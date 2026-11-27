@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Doktor &amp; Reçete Raporu - Eczane VTYS{% endblock %}
+
+{% block content %}
+<ul class="nav nav-pills mb-4">
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('doktor_recete.doktor_listele') }}">Doktorlar</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('doktor_recete.recete_listele') }}">Reçeteler</a></li>
+    <li class="nav-item"><a class="nav-link active" href="{{ url_for('doktor_recete.rapor') }}">Rapor</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('doktor_recete.sorgular') }}">Sorgular</a></li>
+</ul>
+
+<h1 class="h4 mb-1">Doktor Reçete İstatistiği</h1>
+<p class="text-muted small mb-3">Kaynak: <code>vw_doktor_recete_istatistigi</code> görünümü. Hiç reçete yazmamış doktorlar da listelenir.</p>
+
+<div class="table-responsive bg-white shadow-sm rounded mb-5">
+    <table class="table table-striped table-hover mb-0 align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>No</th>
+                <th>Doktor</th>
+                <th>Uzmanlık</th>
+                <th class="text-end">Reçete</th>
+                <th class="text-end">Toplam Miktar</th>
+                <th class="text-end">Farklı Hasta</th>
+                <th class="text-end">Farklı İlaç</th>
+                <th>İlk Reçete</th>
+                <th>Son Reçete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in istatistikler %}
+            <tr>
+                <td>{{ s.doktor_no }}</td>
+                <td>{{ s.doktor_ad }}</td>
+                <td>{{ s.uzmanlik_alani }}</td>
+                <td class="text-end">{{ s.recete_sayisi }}</td>
+                <td class="text-end">{{ s.toplam_miktar }}</td>
+                <td class="text-end">{{ s.farkli_hasta_sayisi }}</td>
+                <td class="text-end">{{ s.farkli_ilac_sayisi }}</td>
+                <td>{{ s.ilk_recete_tarihi.strftime("%d.%m.%Y") if s.ilk_recete_tarihi else "-" }}</td>
+                <td>{{ s.son_recete_tarihi.strftime("%d.%m.%Y") if s.son_recete_tarihi else "-" }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="9" class="text-center text-muted py-3">Kayıtlı doktor bulunamadı.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2 class="h5 mb-1">Doktorun En Çok Yazdığı İlaç</h2>
+<p class="text-muted small mb-3">Kaynak: <code>fn_doktor_en_cok_yazdigi_ilac(p_doktor_no)</code> fonksiyonu. Eşitlikte toplam miktara bakılır.</p>
+
+<form method="get" class="row g-2 align-items-end mb-3">
+    <div class="col-sm-6 col-md-4">
+        <label for="doktor_no" class="form-label">Doktor</label>
+        <select class="form-select" id="doktor_no" name="doktor_no" required>
+            <option value="">Seçin…</option>
+            {% for d in doktorlar %}
+            <option value="{{ d.doktor_no }}" {% if d.doktor_no == secilen_doktor_no %}selected{% endif %}>
+                {{ d.ad }} ({{ d.uzmanlik_alani }})
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Göster</button>
+    </div>
+</form>
+
+{% if secilen_doktor_no is not none %}
+    {% if en_cok_ilac %}
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="h6 text-muted mb-1">En çok yazılan ilaç</h3>
+            <p class="h5 mb-2">{{ en_cok_ilac.ticari_ad }}</p>
+            <p class="mb-0">{{ en_cok_ilac.recete_sayisi }} reçete, toplam {{ en_cok_ilac.toplam_miktar }} kutu</p>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-secondary">Bu doktor henüz reçete yazmamış.</div>
+    {% endif %}
+{% endif %}
+{% endblock %}
