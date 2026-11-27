@@ -4,10 +4,11 @@
 -- Sahibi  : Altyn Baktybekova (032390093)
 -- Aciklama: Tedarik ornek verileri (tedarikci, eczane, ilac numaralari
 --           13_eczane, 14_ilac ve 15_tedarikci dosyalarindaki sirayla eslesir).
--- Notlar  : - Tarihler 01.08.2026 - 20.11.2026 arasindadir; satislardan
---             (23_satis) once stok olussun diye cogu Eylul oncesidir.
---           - 14 ve 15 numarali ilaclar ile 12 numarali tedarikci bilerek
---             hic tedarik edilmedi (LEFT JOIN / NOT EXISTS sorgulari icin).
+-- Notlar  : - Tarihler 01.08.2026 - 20.11.2026 arasindadir.
+--           - Son 18 satir, 23_satis'teki her satisin eczane-ilac cifti icin
+--             satistan ONCE bir tedarik olsun diye eklendi (stok negatif olmasin).
+--           - 14 numarali ilac ve 12 numarali tedarikci bilerek hic tedarik
+--             edilmedi (LEFT JOIN / NOT EXISTS sorgulari icin).
 --           - trg_tedarik_denetim veriden once kuruldugu icin bu satirlarin
 --             her biri tedarik_denetim tablosuna 'INSERT' olarak loglanir.
 -- ============================================================================
@@ -40,4 +41,23 @@ INSERT INTO tedarik (tedarikci_no, eczane_no, ilac_no, miktar, tedarik_tarihi) V
     (10, 6,  2,  140, '2026-10-13'),
     (10, 7,  1,  190, '2026-10-20'),
     (11, 8,  11,  40, '2026-11-03'),
-    (11, 2,  12,  25, '2026-11-17');
+    (11, 2,  12,  25, '2026-11-17'),
+    -- 23_satis ile uyum: her satistan once ilgili eczaneye o ilac gelmis olmali
+    (1,  1,  6,   40, '2026-09-01'),
+    (2,  2,  8,   30, '2026-09-01'),
+    (3,  2,  10,  25, '2026-09-03'),
+    (4,  3,  13,  35, '2026-09-06'),
+    (5,  4,  1,   80, '2026-09-08'),
+    (6,  5,  2,   50, '2026-09-15'),
+    (7,  5,  9,   20, '2026-09-13'),
+    (8,  6,  11,  30, '2026-09-16'),
+    (9,  6,  15,  25, '2026-09-15'),
+    (10, 7,  3,   40, '2026-09-22'),
+    (11, 7,  5,   45, '2026-09-18'),
+    (1,  8,  12,  20, '2026-09-29'),
+    (2,  8,  13,  35, '2026-09-26'),
+    (3,  9,  2,   60, '2026-09-30'),
+    (4,  9,  6,   50, '2026-10-04'),
+    (5,  10, 3,   30, '2026-10-06'),
+    (6,  10, 9,   25, '2026-10-10'),
+    (7,  12, 6,   45, '2026-11-08');
