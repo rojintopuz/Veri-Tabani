@@ -46,7 +46,7 @@ def _recete_formunu_oku():
         form_verisi["miktar"] = int(form_verisi["miktar"])
         form_verisi["recete_tarihi"] = date.fromisoformat(form_verisi["recete_tarihi"])
     except ValueError:
-        return form_verisi, "Doktor, ilaç ve miktar sayı olmalı; tarih geçerli bir gün olmalıdır."
+        return form_verisi, "Doktor, ilaç ve miktar sayı olmalı; tarih geçerli olmalıdır."
     if form_verisi["miktar"] <= 0:
         return form_verisi, "Miktar 0'dan büyük olmalıdır."
     return form_verisi, None

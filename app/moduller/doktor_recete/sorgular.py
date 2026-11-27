@@ -223,7 +223,8 @@ IS_SORGULARI = [
      "Her reçetede hangi doktor, hangi hastaya, hangi ilaçtan ne kadar ve ne zaman yazmıştır?",
      S1_RECETE_DETAY),
     ("S2", "GROUP BY + HAVING",
-     "En az 3 reçete yazmış doktorlar kimlerdir, kaç reçete ve toplam ne kadar ilaç yazmışlardır?",
+     "En az 3 reçete yazmış doktorlar kimlerdir, kaç reçete ve toplam ne kadar ilaç "
+     "yazmışlardır?",
      S2_COK_RECETE_YAZAN_DOKTORLAR),
     ("S3", "Alt sorgu",
      "Miktarı, tüm reçetelerin ortalama miktarından fazla olan reçeteler hangileridir?",
