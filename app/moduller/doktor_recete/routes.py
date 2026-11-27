@@ -55,8 +55,13 @@ def _recete_formunu_oku():
 def _recete_hata_mesaji(hata):
     """Recete INSERT/UPDATE sirasinda gelen DB hatasini Turkce mesaja cevirir."""
     if isinstance(hata, psycopg.errors.RaiseException):
-        # Trigger: muayene sarti veya gelecek tarih
-        return "Reçete kaydedilemedi: " + hata.diag.message_primary
+        # trg_recete_muayene_kontrol: gelecek tarih veya muayene sarti
+        if "gelecekte" in (hata.diag.message_primary or ""):
+            return "Reçete tarihi gelecekte olamaz."
+        return (
+            "Bu doktor, hastayı reçete tarihinde veya öncesinde muayene etmemiş. "
+            "Önce muayene kaydı girin."
+        )
     if isinstance(hata, psycopg.errors.UniqueViolation):
         return "Bu doktor aynı gün bu hastaya bu ilacı zaten reçete etmiş."
     if isinstance(hata, psycopg.errors.ForeignKeyViolation):
